@@ -9,40 +9,39 @@ namespace CRUD
 {
     public class ContactDatabaseService
     {
-        readonly SQLiteConnection database;
+        private readonly SQLiteAsyncConnection db;
 
         public ContactDatabaseService(string dbPath)
         {
-            database = new SQLiteConnection(dbPath);
-            database.CreateTable<Contact>();
+            db = new SQLiteAsyncConnection(dbPath);
+            db.CreateTableAsync<Contact>();
         }
 
-        public List<Contact> GetContacts()
+        public Task<List<Contact>> GetContactsAsync()
         {
-            return database.Table<Contact>().ToList();
+            return db.Table<Contact>().ToListAsync();
         }
 
-        public Contact GetContact(int id)
+        public Task<Contact> GetContactAsync(int id)
         {
-            return database.Get<Contact>(id);
+            return db.Table<Contact>()
+                .Where(i => i.Id == id)
+                .FirstOrDefaultAsync();
         }
 
-        public int SaveContact(Contact contact)
+        public Task<int> CreateEmploye(Contact contact)
         {
-            if (contact.Id != 0)
-            {
-                database.Update(contact);
-                return contact.Id;
-            }
-            else
-            {
-                return database.Insert(contact);
-            }
+            return db.InsertAsync(contact);
         }
 
-        public int DeleteContact(Contact contact)
+        public Task<int> UpdateContact(Contact contact)
         {
-            return database.Delete(contact);
+            return db.UpdateAsync(contact);
+        }
+
+        public Task<int> DeleteContact(Contact contact)
+        {
+            return db.DeleteAsync(contact);
         }
     }
 }
