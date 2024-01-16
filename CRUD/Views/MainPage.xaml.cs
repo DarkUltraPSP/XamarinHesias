@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRUD.Models;
+using CRUD.Views;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -49,8 +50,7 @@ namespace CRUD.Views
         // Méthode appelée lorsqu'on clique sur le bouton "Add"
         private void AddButton_Clicked(object sender, EventArgs e)
         {
-            // Votre logique pour gérer l'ajout d'un élément
-            // Vous pouvez accéder aux valeurs des Entry avec NameEntry.Text et PhoneNumberEntry.Text
+            App.Current.MainPage.Navigation.PushAsync(new AddContact());
         }
 
         // Méthode appelée lorsqu'on clique sur le bouton "Update"
