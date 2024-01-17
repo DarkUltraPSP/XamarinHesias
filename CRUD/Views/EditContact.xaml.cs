@@ -18,7 +18,8 @@ namespace CRUD.Views
         {
             InitializeComponent();
             editContact = contact;
-            NameEntry.Text = contact.Name;
+            FNameEntry.Text = contact.FName;
+            LNameEntry.Text = contact.LName;
             PhoneNumberEntry.Text = contact.PhoneNumber;
             EmailEntry.Text = contact.Email;
             CommentEntry.Text = contact.Commentaire;
@@ -26,13 +27,14 @@ namespace CRUD.Views
 
         async void OnUpdateContactClicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(PhoneNumberEntry.Text) || string.IsNullOrEmpty(EmailEntry.Text))
+            if (string.IsNullOrEmpty(FNameEntry.Text) || string.IsNullOrEmpty(LNameEntry.Text) || string.IsNullOrEmpty(PhoneNumberEntry.Text) || string.IsNullOrEmpty(EmailEntry.Text))
             {
                 await DisplayAlert("Erreur", "Veuillez remplir tous les champs", "OK");
             }
             else
             {
-                editContact.Name = NameEntry.Text;
+                editContact.FName = FNameEntry.Text;
+                editContact.LName = LNameEntry.Text;
                 editContact.PhoneNumber = PhoneNumberEntry.Text;
                 editContact.Email = EmailEntry.Text;
                 editContact.Commentaire = CommentEntry.Text;

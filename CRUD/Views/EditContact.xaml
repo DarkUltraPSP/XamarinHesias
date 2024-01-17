@@ -4,11 +4,14 @@
              x:Class="CRUD.Views.EditContact">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Name" />
-            <Entry x:Name="NameEntry" Placeholder="Enter Name" />
+            <Label Text="Lname"/>
+            <Entry x:Name="LNameEntry" Placeholder="Enter Last Name" />
+
+            <Label Text="FName" />
+            <Entry x:Name="FNameEntry" Placeholder="Enter First Name" />
 
             <Label Text="Phone Number" />
-            <Entry x:Name="PhoneNumberEntry" Placeholder="Enter Phone Number" />
+            <Entry x:Name="PhoneNumberEntry" Placeholder="Enter Phone Number" Keyboard="Numeric" MaxLength="10"/>
 
             <Label Text="Email" />
             <Entry x:Name="EmailEntry" Placeholder="Enter Email" />

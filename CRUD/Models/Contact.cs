@@ -9,7 +9,8 @@ namespace CRUD.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Commentaire { get; set; }

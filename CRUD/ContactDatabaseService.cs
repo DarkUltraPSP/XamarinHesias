@@ -19,14 +19,7 @@ namespace CRUD
 
         public Task<List<Contact>> GetContactsAsync()
         {
-            return db.Table<Contact>().ToListAsync();
-        }
-
-        public Task<Contact> GetContactAsync(int id)
-        {
-            return db.Table<Contact>()
-                .Where(i => i.Id == id)
-                .FirstOrDefaultAsync();
+            return db.Table<Contact>().OrderBy(c => c.LName).ToListAsync();
         }
 
         public Task<int> CreateContact(Contact contact)

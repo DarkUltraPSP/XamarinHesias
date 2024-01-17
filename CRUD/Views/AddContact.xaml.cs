@@ -20,7 +20,7 @@ namespace CRUD.Views
 
         async void OnAddContactClicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(PhoneNumberEntry.Text) || string.IsNullOrEmpty(EmailEntry.Text))
+            if (string.IsNullOrEmpty(FNameEntry.Text) || string.IsNullOrEmpty(LNameEntry.Text) || string.IsNullOrEmpty(PhoneNumberEntry.Text) || string.IsNullOrEmpty(EmailEntry.Text))
             {
                 await DisplayAlert("Erreur", "Veuillez remplir tous les champs", "OK");
             }
@@ -29,7 +29,8 @@ namespace CRUD.Views
                 // Create a new Contact object
                 Contact newContact = new Contact
                 {
-                    Name = NameEntry.Text,
+                    FName = FNameEntry.Text,
+                    LName = LNameEntry.Text,
                     PhoneNumber = PhoneNumberEntry.Text,
                     Email = EmailEntry.Text,
                     Commentaire = CommentEntry.Text

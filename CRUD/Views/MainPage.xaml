@@ -6,14 +6,17 @@
         <ToolbarItem Text="Add" Clicked="AddButton_Clicked" />
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView x:Name="ContactsListView" ItemSelected="ContactsListView_ItemSelected">
+        <ListView x:Name="ContactsListView" ItemSelected="ContactsListView_ItemSelected" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Name}" />
-                            <Label Text="{Binding PhoneNumber}" />
-                            <Label Text="{Binding Commentaire}" />
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding LName}" FontSize="Medium" FontAttributes="Bold"/>
+                                <Label Text="{Binding FName}" FontSize="Medium" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <Label Text="{Binding PhoneNumber}" FontSize="Small"/>
+                            <Label Text="{Binding Email}" FontSize="Small"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
