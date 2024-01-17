@@ -29,7 +29,7 @@ namespace CRUD
                 .FirstOrDefaultAsync();
         }
 
-        public Task<int> CreateEmploye(Contact contact)
+        public Task<int> CreateContact(Contact contact)
         {
             return db.InsertAsync(contact);
         }

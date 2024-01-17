@@ -31,7 +31,7 @@ namespace CRUD.Views
             }
         }
 
-        private void ContactsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ContactsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             // Votre code ici
             if (e.SelectedItem == null)
@@ -41,7 +41,21 @@ namespace CRUD.Views
             var selectedContact = (Contact)e.SelectedItem;
 
             // Faites ce que vous devez faire avec l'objet sélectionné (par exemple, affichez les détails, effectuez une action, etc.)
-            DisplayAlert("Contact sélectionné", $"Nom: {selectedContact.Name}\nNuméro de téléphone: {selectedContact.PhoneNumber}", "OK");
+            //DisplayAlert("Contact sélectionné", $"Nom: {selectedContact.Name}\nNuméro de téléphone: {selectedContact.PhoneNumber}", "OK");
+            string action = await DisplayActionSheet("Choose an action", "Cancel", null, "Edit", "Delete");
+
+            switch (action)
+            {
+                case "Edit":
+                    await Navigation.PushAsync(new EditContact(selectedContact));
+                    break;
+                case "Delete":
+                    await App.MyDB.DeleteContact(selectedContact);
+                    await DisplayAlert("Success", "Contact supprimé avec succès", "OK");
+                    ContactsListView.ItemsSource = await App.MyDB.GetContactsAsync();
+                    await Navigation.PopAsync();
+                    break;
+            }
 
             // Désélectionnez l'élément pour le prochain événement de sélection
             ((ListView)sender).SelectedItem = null;

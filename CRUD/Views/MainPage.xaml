@@ -11,16 +11,12 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding Name}" />
                             <Label Text="{Binding PhoneNumber}" />
+                            <Label Text="{Binding Commentaire}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-        <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-            <Entry Placeholder="Name" x:Name="NameEntry" />
-            <Entry Placeholder="Phone Number" x:Name="PhoneNumberEntry" />
-        </StackLayout>
 
         <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
             <Button Text="Add" Clicked="AddButton_Clicked" />
