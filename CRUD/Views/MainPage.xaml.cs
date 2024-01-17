@@ -33,15 +33,11 @@ namespace CRUD.Views
 
         private async void ContactsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            // Votre code ici
             if (e.SelectedItem == null)
-                return; // Aucun élément sélectionné, vous pouvez gérer cela comme nécessaire
+                return;
 
-            // Accédez à l'objet sélectionné dans la liste (ici, on suppose que vous avez des objets de type Contact)
             var selectedContact = (Contact)e.SelectedItem;
 
-            // Faites ce que vous devez faire avec l'objet sélectionné (par exemple, affichez les détails, effectuez une action, etc.)
-            //DisplayAlert("Contact sélectionné", $"Nom: {selectedContact.Name}\nNuméro de téléphone: {selectedContact.PhoneNumber}", "OK");
             string action = await DisplayActionSheet("Choose an action", "Cancel", null, "Edit", "Delete");
 
             switch (action)
