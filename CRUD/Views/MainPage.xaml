@@ -10,13 +10,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Vertical" Padding="10">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding LName}" FontSize="Medium" FontAttributes="Bold"/>
                                 <Label Text="{Binding FName}" FontSize="Medium" FontAttributes="Bold"/>
                             </StackLayout>
                             <Label Text="{Binding PhoneNumber}" FontSize="Small"/>
                             <Label Text="{Binding Email}" FontSize="Small"/>
+                            <Label Text="{Binding Commentaire}" FontSize="Small"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
