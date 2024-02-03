@@ -38,7 +38,7 @@ namespace CRUD.Views
 
             var selectedContact = (Contact)e.SelectedItem;
 
-            string action = await DisplayActionSheet("Choose an action", "Cancel", null, "Edit", "Delete");
+            string action = await DisplayActionSheet("Choose an option", "Cancel", null, "Edit", "Delete");
 
             switch (action)
             {
@@ -47,34 +47,18 @@ namespace CRUD.Views
                     break;
                 case "Delete":
                     await App.MyDB.DeleteContact(selectedContact);
-                    await DisplayAlert("Success", "Contact supprimé avec succès", "OK");
+                    await DisplayAlert("Success", "Contact deleted successfully", "OK");
                     ContactsListView.ItemsSource = await App.MyDB.GetContactsAsync();
                     await Navigation.PopAsync();
                     break;
             }
 
-            // Désélectionnez l'élément pour le prochain événement de sélection
             ((ListView)sender).SelectedItem = null;
         }
 
-        // Méthode appelée lorsqu'on clique sur le bouton "Add"
         private void AddButton_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage.Navigation.PushAsync(new AddContact());
-        }
-
-        // Méthode appelée lorsqu'on clique sur le bouton "Update"
-        private void UpdateButton_Clicked(object sender, EventArgs e)
-        {
-            // Votre logique pour gérer la mise à jour d'un élément
-            // Vous pouvez accéder aux valeurs des Entry avec NameEntry.Text et PhoneNumberEntry.Text
-        }
-
-        // Méthode appelée lorsqu'on clique sur le bouton "Delete"
-        private void DeleteButton_Clicked(object sender, EventArgs e)
-        {
-            // Votre logique pour gérer la suppression d'un élément
-            // Vous pouvez accéder aux valeurs des Entry avec NameEntry.Text et PhoneNumberEntry.Text
         }
     }
 }

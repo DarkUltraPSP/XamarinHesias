@@ -29,7 +29,7 @@ namespace CRUD.Views
         {
             if (string.IsNullOrEmpty(FNameEntry.Text) || string.IsNullOrEmpty(LNameEntry.Text) || string.IsNullOrEmpty(PhoneNumberEntry.Text) || string.IsNullOrEmpty(EmailEntry.Text))
             {
-                await DisplayAlert("Erreur", "Veuillez remplir tous les champs", "OK");
+                await DisplayAlert("Error", "Please fill all the fields", "OK");
             }
             else
             {
@@ -48,7 +48,7 @@ namespace CRUD.Views
         async void UpdateContact(Contact contact)
         {
             await App.MyDB.UpdateContact(contact);
-            await DisplayAlert("Success", "Contact édité avec succès", "OK");
+            await DisplayAlert("Success", "Contact edited successfully", "OK");
             await Navigation.PopAsync();
         }
     }
